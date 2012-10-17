@@ -1,6 +1,6 @@
 TicketTracker::Application.routes.draw do
   resources :tickets
-
+  resources :people
   get "welcome/index"
 
   # The priority is based upon order of creation:

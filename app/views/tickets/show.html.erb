@@ -15,6 +15,13 @@
   <%= @ticket.status %>
 </p>
 
+<p>
+  <b>Assigned to:</b>
+
+  <% @ticket.people.each do |x| %>
+<%= x.name %>
+  <% end %>
+</p>
 
 <%= link_to 'Edit', edit_ticket_path(@ticket) %> |
 <%= link_to 'Back', tickets_path %>

@@ -20,6 +20,11 @@ ActiveRecord::Schema.define(:version => 20121003014715) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "people_tickets", :force => true do |t|
+    t.integer "person_id"
+    t.integer "ticket_id"
+  end
+
   create_table "tickets", :force => true do |t|
     t.string   "title"
     t.string   "description"

@@ -14,7 +14,6 @@ class TicketsController < ApplicationController
   # GET /tickets/1.json
   def show
     @ticket = Ticket.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @ticket }
@@ -25,16 +24,15 @@ class TicketsController < ApplicationController
   # GET /tickets/new.json
   def new
     @ticket = Ticket.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @ticket }
-    end
+    @people = Person.all
+    
   end
 
   # GET /tickets/1/edit
   def edit
     @ticket = Ticket.find(params[:id])
+    @people = Person.all
+    
   end
 
   # POST /tickets
@@ -42,15 +40,11 @@ class TicketsController < ApplicationController
   def create
     @ticket = Ticket.new(params[:ticket])
 
-    respond_to do |format|
       if @ticket.save
-        format.html { redirect_to @ticket, notice: 'Ticket was successfully created.' }
-        format.json { render json: @ticket, status: :created, location: @ticket }
+        redirect_to @ticket, notice: 'Ticket was successfully created.'
       else
-        format.html { render action: "new" }
-        format.json { render json: @ticket.errors, status: :unprocessable_entity }
+        render action: "new"
       end
-    end
   end
 
   # PUT /tickets/1
